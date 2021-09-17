@@ -1,0 +1,58 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^zjh-(.*)": "@/components/zjh-$1/zjh-$1.vue"
+		}
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/demo0/demo0",
+			"style": {
+				"navigationBarTitleText": "demo0"
+			}
+		},
+		{
+			"path": "pages/demo1/demo1",
+			"style": {
+				"navigationBarTitleText": "demo1"
+			}
+		},
+		{
+			"path": "pages/demo2/demo2",
+			"style": {
+				"navigationBarTitleText": "demo2"
+			}
+		}
+	],
+	"tabBar": {
+		"backgroundColor": "#ffffff",
+		"color": "#898989",
+		"selectedColor": "#ff7600",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/home/home",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/demo0/demo0",
+				"text": "Demo0"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uniapp",
+		// #ifdef H5 || MP-WEIXIN
+		"navigationBarBackgroundColor": "#FF0000",
+		// #endif
+		"backgroundColor": "#F8F8F8"
+	}
+}
