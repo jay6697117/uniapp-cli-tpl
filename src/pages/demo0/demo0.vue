@@ -1,9 +1,12 @@
 <template>
   <view class="demo0">
-    <picker @change="bindPickerChange" :value="index" :range="array">
+    <picker mode="selector" @change="bindPickerChange" :value="index" :range="array">
       <view class="picker">当前选择：{{ array[index] }}</view>
     </picker>
-    <view>{{ index }}</view>
+    <view>------------------------</view>
+    <picker mode="date" :value="currentDate" :start="startDate" :end="endDate" @change="bindDateChange">
+      <view class="uni-input">{{ currentDate }}</view>
+    </picker>
   </view>
 </template>
 
@@ -13,13 +16,37 @@ export default {
   data() {
     return {
       index: 0,
-      array: ['A', 'B', 'C']
+      array: ['A', 'B', 'C'],
+      currentDate: '',
+      startDate:'',
+      endDate:''
     };
   },
   methods: {
     bindPickerChange(e) {
-      console.log(`e:`, e)
+      console.log(`bindPickerChange e:`, e);
       this.index = e.target.value;
+    },
+    bindDateChange: function(e) {
+      console.log(`bindDateChange e:`, e);
+      this.currentDate = e.target.value;
+    },
+    getDate(type) {
+      const date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+
+      if (type === 'start') {
+        year = year - 30;
+      } else if (type === 'end') {
+        year = year + 30;
+      }
+
+      month = month > 9 ? month : '0' + month;
+      day = day > 9 ? day : '0' + day;
+
+      return `${year}-${month}-${day}`;
     }
   },
   computed: {},
@@ -29,7 +56,11 @@ export default {
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)
-  onShow() {},
+  onShow() {
+    this.currentDate = this.getDate();
+    this.startDate = this.getDate('start');
+    this.endDate = this.getDate('end');
+  },
   // 页面周期函数--监听页面隐藏
   onHide() {},
   // 页面周期函数--监听页面卸载
