@@ -78,4 +78,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.demo0{
+  background: linear-gradient(left, #00463B 0%, #00463B 100%) !important;
+}
+</style>
